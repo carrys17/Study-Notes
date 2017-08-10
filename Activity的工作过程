@@ -1,4 +1,6 @@
- 从intent.startActivity开始分析Activity的启动和工作工程
+从intent.startActivity开始分析Activity的启动和工作工程
+
+
           startActivity
                  ↓
           startActivityForResult
