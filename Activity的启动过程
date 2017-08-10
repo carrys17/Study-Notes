@@ -1,0 +1,60 @@
+
+          startActivity
+                 ↓
+          startActivityForResult
+                 ↓
+          mInstrumentation.execStartActivity
+                 ↓
+          ActivityManagerNative.getDefault().startActivity      //ActivityManagerNative.getDefault() 其实就是AMS
+                 ↓
+          AMS.startActivity
+                 ↓
+          AMS.startActivityAsUser
+                 ↓
+          ActivityStackSupervisor.startActivityMayWait
+                 ↓
+          ActivityStackSupervisor.startActivityLocked
+                 ↓
+          ActivityStackSupervisor.startActivityUncheckedLocked
+                 ↓
+          ActivityStack.resumeTopActivitiesLocked
+                 ↓
+          ActivityStack.resumeTopActivityInnerLocked
+                 ↓
+          ActivityStackSupervisor.startSpecificActivityLocked
+                 ↓
+          ActivityStackSupervisor.realStartActivityLocke
+                 ↓
+          app.thread.scheduleLaunchActivity           // app.thread的类型为IApplicationThread（抽象类）→                                                                             
+                 ↓                                    // ApplicationThreadNative(抽象类) → ApplicationThread（具体实现类）                      
+          ApplicationThread.scheduleLaunchActivity(...){
+              ...      
+              sendMessage(H.LAUNCH_ACTIVITY, activityClientRecord);
+          }
+                 ↓
+          H.handleMessage(){                          // H的定义在ActivityThread中
+              case LACUNCH_ACTIVITY :
+                  handleLauchActivity(r,null);
+              case ...
+          }
+                 ↓
+          ActivityThread.handleLaunchActivity(ActivityClientRecord r, Intent customIntent){
+              Activity a = performLaunchActivity(r,customIntent);
+              if(a!=null){
+                  r.createConfig = new Configuration(mConfiguration);
+                  Bundle oldState = r.state;
+                  //这个就是先调用onResume方法，接着在makeVisible中将DecorView添加到Window中
+                  handleResumeActivity(r.token,false,r.isForward,!r.activity.mFinished && !r.startsNotResumed); 
+                  ...
+              }
+          }
+
+最终performLaunchActivity完成了Activity对象的创建和启动过程
+
+
+performLaunchActivity这个方法主要完成了如下几件事：
+1、从ActivityClientRecord中获取待启动的Activity的组件信息
+2、通过Instrumentation的newActivity方法使用类加载器创建Activity对象
+3、通过LoadedApk的makeApplication方法来创建Application对象
+4、创建ContextImpl对象并通过Activity的attach方法来完成一些重要数据的初始化（比如Window对象的创建并设置callback回调）
+5、调用Activity的onCreate 方法
