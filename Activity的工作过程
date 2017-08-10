@@ -1,4 +1,4 @@
-
+ 从intent.startActivity开始分析Activity的启动和工作工程
           startActivity
                  ↓
           startActivityForResult
@@ -50,6 +50,7 @@
           }
 
 最终performLaunchActivity完成了Activity对象的创建和启动过程
+
 
 
 performLaunchActivity这个方法主要完成了如下几件事：
