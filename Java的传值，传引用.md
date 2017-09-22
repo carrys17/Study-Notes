@@ -58,10 +58,14 @@ father ------> [[before, after]]
 最后再看一个例子
 
 ![](https://i.imgur.com/41saXzG.png)
+
 ![](https://i.imgur.com/GekkZjT.png)
+
 ![](https://i.imgur.com/0I7NnG1.png)
 
+
 输出为
+
 
 ![](https://i.imgur.com/wqtoPub.png)
 
