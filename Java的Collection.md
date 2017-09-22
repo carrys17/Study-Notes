@@ -30,13 +30,12 @@ HashSet 所维护的顺序是没有规则可循的，出于速度原因的考虑
 TreeSet 将元素存储在红黑树数据结构中，它的数据是按升序的结果来保存的。（但是不是按照词典的顺序，A，B，a，b）如果想按照词典的顺序（A，a, B , b）可以这样初始化  Set<String> set = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
 
 LinkedHashSet 因为速度查询原因也使用了散列，但是看起来它使用了链表来维护元素的插入顺序
-##
+
 
 
 
 ##List
 List是有序的Collection，应用此接口可以或许正确的把握每个元素插入的地位。用户可以或许应用索引（元素在List中的地位，类似于数组下标）来接见List中的元素，这类似于Java的数组。和Set不同，List容许有雷同的元素。
-
 
 ArrayList  它善于随机访问元素，但是在List的中间插入和移除元素时较慢
 
@@ -55,12 +54,11 @@ removeFirst（）和 remove（）完全一样，它们移除并返回列表的�
 
 poll（）稍有差异，它在列表为空时返回null
 
-
 addFirst()与add()和addLast()相比，addFirst()将某个元素插入到列表的头部,而add()和addLast()将某个元素插入到列表的尾部
 
 removeLast（）移除并返回列表的最后一个元素
 
-##
+
 
 
 ##Vector
@@ -76,7 +74,7 @@ ArrayList和Vector的性能分析
 
 
 
-##
+
 
 ##Stack
 Stack  ，栈，用LinkedList来实现，
@@ -108,10 +106,7 @@ PriorityQueue  优先级队列
 可以实现下一个弹出的元素是最需要的元素（具有最高的优先级）
 
 ![](https://i.imgur.com/q5knReC.png)
-
-
 输出结果
-
 ![](https://i.imgur.com/NVP6jt9.png)
 
 ##
