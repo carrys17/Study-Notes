@@ -1,4 +1,4 @@
-# Java的Collection
+ # Java的Collection
 
 
 先来看总的一个图
@@ -6,7 +6,7 @@
 ![](https://i.imgur.com/LekW3bW.jpg)
 
 其中加粗的就是常用的几个
-
+-
 ![](https://i.imgur.com/8WZNnbW.png)
 
 现在看下面的这个程序，其中的注释也写的非常清楚了
@@ -16,7 +16,7 @@
 它的输出为
 
 ![](https://i.imgur.com/KR5SJZ5.png)
-
+-
 ## Set
 
 Set是一种不包含重复的元素的Collection，即随便的两个元素e1和e2都有e1.equals（e2）=false，Set最多有一个null元素。
@@ -34,7 +34,7 @@ LinkedHashSet 因为速度查询原因也使用了散列，但是看起来它使
 
 
 
-##List
+## List
 List是有序的Collection，应用此接口可以或许正确的把握每个元素插入的地位。用户可以或许应用索引（元素在List中的地位，类似于数组下标）来接见List中的元素，这类似于Java的数组。和Set不同，List容许有雷同的元素。
 
 ArrayList  它善于随机访问元素，但是在List的中间插入和移除元素时较慢
@@ -61,7 +61,7 @@ removeLast（）移除并返回列表的最后一个元素
 
 
 
-##Vector
+## Vector
 
 Vector很是类似ArrayList，然则Vector是同步的。由Vector创建的Iterator，固然和ArrayList创建的Iterator是同一接口，然则，因为Vector是同步的，当一个Iterator被创建并且正在被应用，另一个线程改变了Vector的状况（例如，添加或删除了一些元素），这时调用Iterator的办法时将抛出ConcurrentModificationException，是以必须捕获该异常。Vector因为应用了synchronized办法（线程安然）所以机能上比ArrayList要差
 
@@ -76,7 +76,7 @@ ArrayList和Vector的性能分析
 
 
 
-##Stack
+## Stack
 Stack  ，栈，用LinkedList来实现，
 
 其中的push 是把元素放入栈顶
@@ -106,7 +106,9 @@ PriorityQueue  优先级队列
 可以实现下一个弹出的元素是最需要的元素（具有最高的优先级）
 
 ![](https://i.imgur.com/q5knReC.png)
+
 输出结果
+
 ![](https://i.imgur.com/NVP6jt9.png)
 
 ##
